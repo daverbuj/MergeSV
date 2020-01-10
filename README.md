@@ -1,3 +1,4 @@
+# MergeSV
 ```bash
 o     o                            .oPYo. o     o 
 8b   d8                            8      8     8 
@@ -23,7 +24,16 @@ pip install mergesv
 ## Usage
 
 ```bash
-mergesv -i ..........
+mergesv <-i BED> [options]
+
+Required Arguments:
+	-i    FILE    BED file
+
+Options:
+	-o    FILE    output file [bed-file.mergesv.bed]
+	-r    FLOAT   reciprocal overlap [0.8]
+	-s    INT     distance (bp) from start and end values to be considered a merge [1000]
+	-c            Include number of merged SVs in output
 ```
 
 ## How the merge works
