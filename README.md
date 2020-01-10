@@ -1,6 +1,16 @@
-# MergeSV
+```bash
+o     o                            .oPYo. o     o 
+8b   d8                            8      8     8 
+8`b d'8 .oPYo. oPYo. .oPYo. .oPYo. `Yooo. 8     8 
+8 `o' 8 8oooo8 8  `' 8    8 8oooo8     `8 `b   d' 
+8     8 8.     8     8    8 8.          8  `b d'  
+8     8 `Yooo' 8     `YooP8 `Yooo' `YooP'   `8'   
+<------------>            8     <----------->     
+  <------------>       ooP'  <----------------->  
+      <--------->      <-------->        <------->
+```
 
-MergeSV does this
+MergeSV is a command line tool 
 
 ## Installation
 
@@ -13,7 +23,7 @@ pip install mergesv
 ## Usage
 
 ```bash
-merges -i ..........
+mergesv -i ..........
 ```
 
 ## How the merge works
