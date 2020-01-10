@@ -16,7 +16,7 @@ pip install mergesv
 merges -i ..........
 ```
 
-### How the merge works
+## How the merge works
 This is how the merge works
 
 ## Contributing
