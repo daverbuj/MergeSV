@@ -1,5 +1,5 @@
 # MergeSV
-```python
+```
 o     o                            .oPYo. o     o 
 8b   d8                            8      8     8 
 8`b d'8 .oPYo. oPYo. .oPYo. .oPYo. `Yooo. 8     8 
@@ -23,7 +23,7 @@ pip install mergesv
 
 ## Usage
 
-```python
+```
 mergesv <-i BED> [options]
 
 Required Arguments:
