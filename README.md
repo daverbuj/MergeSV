@@ -11,7 +11,7 @@ o     o                            .oPYo. o     o
       <--------->      <-------->        <------->
 ```
 
-MergeSV is a command line tool 
+MergeSV is a command line tool used merge BED file tracks based on both reciprocal overlap and proximity to the ends of the tracks. 
 
 ## Installation
 
@@ -37,7 +37,9 @@ Options:
 ```
 
 ## How the merge works
-This is how the merge works
+The merge is done by ensuring that the tracks have a reciprocal overlap (default 80%) as well as proximity to the starts and ends (default 1000 bp). The latter is particularly important in cases of large tracks where they share 80% overlap, but the start and end values differ largely. The merge is performed recursively, guaranteeing all tracks are adequately merged.
+The the first merged track will be selected based on the median value of the group of tracks, but after merging again in the recursion, the merged track will be decided based on the previously-merged track with the largest number of merges.
+CIPOS and CIEND encompass the range of every track that becomes merged.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
