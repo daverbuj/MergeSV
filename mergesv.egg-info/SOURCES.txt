@@ -1,0 +1,10 @@
+README.md
+mergesv
+setup.py
+mergesv/__init__.py
+mergesv/mergesv
+mergesv/mergesv.py
+mergesv.egg-info/PKG-INFO
+mergesv.egg-info/SOURCES.txt
+mergesv.egg-info/dependency_links.txt
+mergesv.egg-info/top_level.txt

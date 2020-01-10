@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: mergesv
+Version: 0.0.2
+Summary: Merge overlapping SVs
+Home-page: https://github.com/daverbuj/MergeSV
+Author: Dan Averbuj
+Author-email: dan.averbuj@gmail.com
+License: UNKNOWN
+Description: placeholder
+Platform: UNKNOWN
+Requires: csv
+Requires: argparse
+Requires: operator
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
