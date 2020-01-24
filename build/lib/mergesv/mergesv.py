@@ -3,7 +3,7 @@ import argparse
 from argparse import RawTextHelpFormatter
 from operator import itemgetter
 
-__version__='0.0.1'
+__version__='1.4'
 __usage__="""
                                                   
 o     o                            .oPYo. o     o 
@@ -63,8 +63,10 @@ def is_recip_overlap(ref, sv, ro, edge_size):
 	# checks for reciprocal overlap and within 1kb
 	ref_start, ref_end = ref[1], ref[2]
 	ref_size = int(ref_end) - int(ref_start)
+	if ref_size == 0: ref_size = 1
 	sv_start, sv_end = sv[1], sv[2]
 	sv_size = int(sv_end) - int(sv_start)
+	if sv_size == 0: sv_size = 1
 
 	# sv overlap
 	if ref_end >= sv_end: sv_overlap = 1.0
@@ -238,22 +240,30 @@ def main():
 	## Create dictionary separating by chromosome and svtype
 	split_dict = {}
 	for sv in csv.reader(bed_fh, dialect='excel-tab'):
-		chrom, svtype = sv[0], sv[3]
-		if not chrom in split_dict:
-			split_dict[chrom] = {'DEL':[], 'DUP':[], 'INV':[]}
-		split_dict[chrom][svtype].append([sv[0], int(sv[1]), int(sv[2]), sv[3]])
+		try:
+			int(sv[0][-1]) # used to skip the header
+			chrom, svtype = sv[0], sv[3]
+			if not chrom in split_dict:
+#				split_dict[chrom] = {'DEL':[], 'DUP':[], 'INV':[]}
+				split_dict[chrom] = {}
+			if not svtype in split_dict[chrom]:
+				split_dict[chrom][svtype] = []
+			split_dict[chrom][svtype].append([sv[0], int(sv[1]), int(sv[2]), sv[3]])
+		except ValueError:
+			continue # skips the header
 
 	## Loop through each chromosome and SV type list, merging all SVs to one outfile
 	final_merged = []
 	for chrom in split_dict:
 		for svtype in split_dict[chrom]:
 			#print(chrom, svtype)
-			# Sort SVs by start position
-			split_dict[chrom][svtype].sort(key=itemgetter(1))
 			sv_list = split_dict[chrom][svtype]
 
 			# recursive loop to merge SVs, ensuring to merge previously-merged SVs
-			while True:
+			while True:	
+				# Sort SVs by start position
+				sv_list.sort(key=itemgetter(1))
+				# get length of sv_list to compare to output, to see if we need to keep merging
 				premerge_length = len(tuple(sv_list))
 				merged_list = merge_list(sv_list, args.r, args.s)
 				# if the SVs did not merge any further, break out of loop and write output to file

@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mergesv",
-    version="0.0.2",
+    version="1.4",
     author="Dan Averbuj",
     author_email="dan.averbuj@gmail.com",
     description="Merge overlapping SVs",
